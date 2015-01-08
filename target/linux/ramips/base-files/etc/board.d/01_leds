@@ -228,6 +228,15 @@ case $board in
 		set_usb_led "lenovo:blue:usb"
 		set_wifi_led "lenovo:blue:wifi"
 		;;
+	wr856n)
+                ucidef_set_led_default "power" "power" "tgrass:blue:power" "1"
+                ucidef_set_led_switch "lan1" "lan1" "tgrass:blue:lan1" "switch0" "0x02"
+                ucidef_set_led_switch "lan2" "lan2" "tgrass:blue:lan2" "switch0" "0x04"
+                ucidef_set_led_switch "lan3" "lan3" "tgrass:blue:lan3" "switch0" "0x08"
+                ucidef_set_led_switch "lan4" "lan4" "tgrass:blue:lan4" "switch0" "0x10"
+                ucidef_set_led_switch "wan" "wan" "tgrass:blue:wan" "switch0" "0x01"
+                set_wifi_led "tgrass:blue:air" 
+		;;		
 esac
 
 board_config_flush

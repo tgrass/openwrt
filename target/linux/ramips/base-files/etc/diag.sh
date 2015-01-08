@@ -214,6 +214,9 @@ get_status_led() {
 	y1s)
 		status_led="lenovo:blue:power"
 		;;
+	wr856n)
+		status_led="tgrass:blue:power"
+		;;
 	esac
 }
 

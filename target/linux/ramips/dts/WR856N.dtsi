@@ -1,0 +1,81 @@
+/include/ "mt7620n.dtsi"
+
+/ {
+	compatible = "wr856n", "ralink,mt7620n-soc";
+	model = "TGrass WR856N";
+
+	palmbus@10000000 {
+		gpio2: gpio@660 {
+			status = "okay";
+		};
+
+		gpio3: gpio@688 {
+			status = "okay";
+		};
+	};
+
+	ehci@101c0000 {
+		status = "okay";
+	};
+
+	ohci@101c1000 {
+		status = "okay";
+	};
+
+	ethernet@10100000 {
+		mtd-mac-address = <&factory 0x4>;
+		ralink,port-map = "wllll";
+	};
+
+	wmac@10180000 {
+		ralink,mtd-eeprom = <&factory 0>;
+	};
+
+	pinctrl {
+		state_default: pinctrl0 {
+			default {
+				ralink,group = "ephy", "wled", "pa", "i2c", "wdt", "uartf";
+				ralink,function = "gpio";
+			};
+		};
+	};
+        gpio-leds {
+                compatible = "gpio-leds";
+                wan {
+                        label = "tgrass:blue:wan";
+                        gpios = <&gpio2 0 1>;
+                };
+                lan1 {
+                        label = "tgrass:blue:lan1";
+                        gpios = <&gpio2 1 1>;
+                };
+                lan2 {
+                        label = "tgrass:blue:lan2";
+                        gpios = <&gpio2 2 1>;
+                };
+                lan3 {
+                        label = "tgrass:blue:lan3";
+                        gpios = <&gpio2 3 1>;
+                };
+                lan4 {
+                        label = "tgrass:blue:lan4";
+                        gpios = <&gpio2 4 1>;
+                };
+                air {
+                        label = "tgrass:blue:air";
+                        gpios = <&gpio3 0 1>;
+                };
+        };
+
+        gpio-keys-polled {
+                compatible = "gpio-keys-polled";
+                #address-cells = <1>;
+                #size-cells = <0>;
+                poll-interval = <20>;
+                reset {
+                        label = "reset";
+                        gpios = <&gpio0 1 1>;
+                        linux,code = <0x198>;
+                };
+        };
+};

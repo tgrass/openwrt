@@ -177,6 +177,16 @@ define BuildFirmware/DefaultDualSize/initramfs
 	$(call BuildFirmware/OF/initramfs,$(1),$(2)-8M,$(3)-8M)
 endef
 
+# wrappers for tgrass boards that have 8MB and 16MB versions
+define BuildFirmware/TGrassDualSize/squashfs
+	$(call BuildFirmware/Default8M/$(1),$(1),$(2)-8M,$(3)-8M)
+	$(call BuildFirmware/Default16M/$(1),$(1),$(2)-16M,$(3)-16M)
+endef
+define BuildFirmware/TGrassDualSize/initramfs
+	$(call BuildFirmware/OF/initramfs,$(1),$(2)-8M,$(3)-8M)
+	$(call BuildFirmware/OF/initramfs,$(1),$(2)-16M,$(3)-16M)
+endef
+
 # Some boards need a special header inside the uImage to make them bootable
 define BuildFirmware/CustomFlashFactory/squashfs
 	$(call BuildFirmware/CustomFlash/$(1),$(1),$(2),$(3),$(4))
@@ -810,7 +820,7 @@ Image/Build/Profile/WR8305RT=$(call BuildFirmware/Default8M/$(1),$(1),wr8305rt,W
 Image/Build/Profile/WRTNODE=$(call BuildFirmware/Default16M/$(1),$(1),wrtnode,WRTNODE)
 Image/Build/Profile/WT3020=$(call BuildFirmware/PorayDualSize/$(1),$(1),wt3020,WT3020)
 Image/Build/Profile/ZBT-WA05=$(call BuildFirmware/Default8M/$(1),$(1),zbt-wa05,ZBT-WA05)
-
+Image/Build/Profile/WR856N=$(call BuildFirmware/TGrassDualSize/$(1),$(1),wr856n,WR856N)
 
 ifeq ($(SUBTARGET),mt7620)
 define Image/Build/Profile/Default
@@ -836,6 +846,7 @@ define Image/Build/Profile/Default
 	$(call Image/Build/Profile/WRTNODE,$(1))
 	$(call Image/Build/Profile/WT3020,$(1))
 	$(call Image/Build/Profile/ZBT-WA05,$(1))
+	$(call Image/Build/Profile/WR856N,$(1))
 endef
 endif
 

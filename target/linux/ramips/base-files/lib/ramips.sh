@@ -370,6 +370,9 @@ ramips_board_detect() {
 	*"Mediatek MT7628AN evaluation board")
 		name="mt7628"
 		;;
+	*"TGrass WR856N")
+		name="wr856n"
+		;;
 	*)
 		name="generic"
 		;;
