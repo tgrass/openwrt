@@ -577,6 +577,7 @@ start_service() {
 	[ $ADD_LOCAL_HOSTNAME -eq 1 ] && network_get_ipaddr lanaddr "lan" && {
 		local hostname="$(uci_get system @system[0] hostname OpenWrt)"
 		dhcp_domain_add "" "$hostname" "$lanaddr"
+		dhcp_domain_add "" "i.tgrass.com" "$lanaddr"
 	}
 
 	echo >> $CONFIGFILE
