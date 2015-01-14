@@ -18,7 +18,7 @@ start_instance() {
 		[ -n "$ipaddr" ] || return 1
 		config_get supernode "$cfg" 'supernode' 'yun.tgrass.com'
 		config_get port "$cfg" 'port' '9437'
-		config_get community "$cfg" 'tgrass'
+		config_get community "$cfg" 'community'
 		config_get key "$cfg" 'key' 'chudird'
 		config_get_bool route "$cfg" 'route' '1'
 		[ "$route" = "1" ] && args='-r'
