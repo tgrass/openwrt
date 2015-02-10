@@ -97,6 +97,9 @@ tplink_board_detect() {
 	"015300"*)
 		model="EasyLink EL-MINI"
 		;;
+	"120000"*)
+		model="MERCURY MAC1200R"
+		;;
 	"3C0001"*)
 		model="OOLITE"
 		;;
@@ -141,6 +144,9 @@ tplink_board_detect() {
 		;;
 	"084200"*)
 		model="TP-Link TL-WR842N/ND"
+		;;
+	"084300"*)
+		model="TP-Link TL-WR843N/ND"
 		;;
 	"085000"*)
 		model="TP-Link TL-WA850RE"
@@ -432,6 +438,9 @@ ar71xx_board_detect() {
 	*LS-SR71)
 		name="ls-sr71"
 		;;
+	*"MAC1200R")
+		name="mc-mac1200r"
+		;;
 	*MR600v2)
 		name="mr600v2"
 		;;
@@ -636,6 +645,9 @@ ar71xx_board_detect() {
 	*"TL-MR3420 v2")
 		name="tl-mr3420-v2"
 		;;
+	*"TL-WA701ND v2")
+		name="tl-wa701nd-v2"
+		;;
 	*TL-WA750RE)
 		name="tl-wa750re"
 		;;
@@ -644,6 +656,9 @@ ar71xx_board_detect() {
 		;;
 	*TL-WA850RE)
 		name="tl-wa850re"
+		;;
+	*TL-WA860RE)
+		name="tl-wa860re"
 		;;
 	*"TL-WA830RE v2")
 		name="tl-wa830re-v2"
@@ -693,6 +708,9 @@ ar71xx_board_detect() {
 	*TL-WR941ND)
 		name="tl-wr941nd"
 		;;
+	*"TL-WR941N/ND v5")
+		name="tl-wr941nd-v5"
+		;;
 	*"TL-WR703N v1")
 		name="tl-wr703n"
 		;;
@@ -732,6 +750,9 @@ ar71xx_board_detect() {
 	*"UniFiAP Outdoor")
 		name="unifi-outdoor"
 		;;
+	*"UniFiAP Outdoor+")
+		name="unifi-outdoor-plus"
+		;;
 	*WP543)
 		name="wp543"
 		;;
@@ -767,6 +788,9 @@ ar71xx_board_detect() {
 		;;
 	*"WNR612 V2")
 		name="wnr612-v2"
+		;;
+	*"WNR1000 V2")
+		name="wnr1000-v2"
 		;;
 	*WRT160NL)
 		name="wrt160nl"
