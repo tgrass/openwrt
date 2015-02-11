@@ -297,6 +297,7 @@ platform_check_image() {
 	el-m150 | \
 	el-mini | \
 	gl-inet | \
+	mc-mac1200r | \
 	oolite | \
 	smart-300 | \
 	tl-mr10u | \
@@ -309,6 +310,7 @@ platform_check_image() {
 	tl-mr3220-v2 | \
 	tl-mr3420 | \
 	tl-mr3420-v2 | \
+	tl-wa701nd-v2 | \
 	tl-wa7510n | \
 	tl-wa750re | \
 	tl-wa850re | \
@@ -332,6 +334,7 @@ platform_check_image() {
 	tl-wr841n-v9 | \
 	tl-wr842n-v2 | \
 	tl-wr941nd | \
+	tl-wr941nd-v5 | \
 	tl-wr1041n-v2 | \
 	tl-wr1043nd | \
 	tl-wr1043nd-v2 | \
@@ -368,6 +371,7 @@ platform_check_image() {
 		return 1
 		;;
 
+	unifi-outdoor-plus | \
 	uap-pro)
 		[ "$magic_long" != "19852003" ] && {
 			echo "Invalid image type."
@@ -377,7 +381,8 @@ platform_check_image() {
 		;;
 	wndr3700 | \
 	wnr2000-v3 | \
-	wnr612-v2)
+	wnr612-v2 | \
+	wnr1000-v2)
 		local hw_magic
 
 		hw_magic="$(ar71xx_get_mtd_part_magic firmware)"
@@ -483,6 +488,7 @@ platform_do_upgrade() {
 	om5p)
 		platform_do_upgrade_openmesh "$ARGV"
 		;;
+	unifi-outdoor-plus | \
 	uap-pro)
 		MTD_CONFIG_ARGS="-s 0x180000"
 		default_do_upgrade "$ARGV"
